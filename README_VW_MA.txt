@@ -1,4 +1,4 @@
-Quirk Volkswagen MA Trade Appraisal - Clone of Subaru variant
+Quirk Volkswagen MA Trade Appraisal 
 --------------------------------------------------------------
 - Primary site link updated to: https://www.quirkvw.com
 - Suggested Netlify site name: quirkvwtrade (or quirk-vw-ma-trade)

@@ -8,6 +8,25 @@
 <link href="https://vpic.nhtsa.dot.gov" rel="preconnect"/>
 <link href="assets/styles.css?v=2" rel="stylesheet"/>
 
+<!-- WATERMARK BACKGROUND (uses assets/quirk-lot3.webp) -->
+<style>
+  :root { --wm-opacity: 0.45; } /* adjust 0.20 (lighter) … 0.50 (stronger) */
+
+  /* Fixed, full-bleed watermark behind all content */
+  body.has-watermark { position: relative; background-color: #fff; }
+  body.has-watermark::before{
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: url("assets/quirk-lot3.webp") center / cover no-repeat;
+    opacity: var(--wm-opacity);
+    pointer-events: none;
+    z-index: 0; /* behind the content */
+  }
+  /* Ensure main content sits above the watermark overlay */
+  #tradeForm, .toast { position: relative; z-index: 1; }
+</style>
+
 <!-- MOBILE-ONLY OVERRIDES: center logo and stack title under it -->
 <style>
   @media (max-width: 640px) {
@@ -39,7 +58,7 @@
   }
 </style>
 </head>
-<body>
+<body class="has-watermark">
 <!-- 
     Final Version:
     1. The 'netlify' attribute tells Netlify to process the form.

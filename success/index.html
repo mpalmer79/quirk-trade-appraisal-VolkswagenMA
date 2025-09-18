@@ -3,47 +3,93 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex" />
   <title data-i18n="successTitle">Thanks! - Quirk Volkswagen MA</title>
   <link rel="stylesheet" href="/assets/styles.css" />
+
+  <style>
+    /* Desktop/tablet: center the card and show a soft lot watermark */
+    body.success {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;          /* vertical centering */
+      justify-content: center;      /* horizontal centering */
+      padding: 40px 16px;           /* breathing room */
+      background:
+        /* overlay controls overall darkness of the background image */
+        linear-gradient(rgba(0,0,0,.35), rgba(0,0,0,.35)),
+        url('/assets/quirk-lot.png') center / cover no-repeat fixed;
+    }
+
+    /* The white “library card” */
+    main.success-card {
+      max-width: 720px;
+      width: 100%;
+      background: rgba(255,255,255,0.50);  /* 50% white */
+      padding: 24px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    h1 { color:#004a2f; margin:0 0 10px; }
+    p.lead { margin:0 0 18px; }
+
+    .btnrow {
+      display:flex;
+      gap:10px;
+      justify-content:center;
+      margin-top:18px;
+    }
+    .btnrow a { text-decoration:none; }
+
+    /* Make the first button match the light-green “ghost” style */
+    .btnrow .ghost-btn { /* both buttons use ghost style on this page */ }
+
+    .brand-img {
+      width:100%;
+      max-width:720px;
+      height:auto;
+      display:block;
+      margin:32px auto 0;
+      cursor:pointer;
+    }
+
+    /* Mobile-only: move card near the top, keep 50% opacity, stack buttons */
+    @media (max-width: 640px) {
+      body.success {
+        align-items: flex-start;   /* push card toward the top */
+        padding-top: 16px;         /* small breathing room */
+      }
+      main.success-card {
+        background: rgba(255,255,255,0.50); /* keep at 50% on phones too */
+      }
+      .btnrow { flex-direction: column; }
+    }
+  </style>
 </head>
-<body
-  style="
-    min-height:100vh;
-    /* Watermark background with a gentle dark overlay for legibility */
-    background:
-      linear-gradient(rgba(0,0,0,.18), rgba(0,0,0,.18)),
-      url('/assets/quirk-lot.png') center / cover no-repeat fixed;
-  "
->
-  <main style="max-width:720px;margin:40px auto;background:#fff;padding:24px;
-               border-radius:12px;box-shadow:0 4px 10px rgba(0,0,0,0.1)">
-    <h1 style="text-align:center;margin:0 0 10px;color:#004a2f" data-i18n="successHeading">
-      Thank you!
-    </h1>
-    <p style="text-align:center;font-size:16px" data-i18n="successMessage">
+
+<body class="success">
+  <main class="success-card">
+    <h1 data-i18n="successHeading">Thank you!</h1>
+    <p class="lead" data-i18n="successMessage">
       We received your trade-in details. A Quirk Volkswagen specialist will contact you shortly.
     </p>
 
-    <div style="display:flex;gap:10px;justify-content:center;margin-top:18px">
-      <a class="spanish-btn" href="/" style="text-decoration:none" data-i18n="submitAnother">
-        Submit another vehicle
-      </a>
-      <a class="ghost-btn" href="https://www.quirkvw.com" target="_blank" 
-         rel="noopener noreferrer" style="text-decoration:none" data-i18n="backToDealer">
+    <div class="btnrow">
+      <!-- Make both buttons light-green by using the ghost-btn class -->
+      <a class="ghost-btn" href="/" data-i18n="submitAnother">Submit another vehicle</a>
+      <a class="ghost-btn" href="https://www.quirkvw.com" target="_blank" rel="noopener noreferrer" data-i18n="backToDealer">
         Back to Quirk Volkswagen MA
       </a>
     </div>
 
-    <!-- Logo inside same white card -->
-    <div style="margin-top:32px; text-align:center;">
-      <a href="https://www.quirkvw.com" target="_blank" rel="noopener noreferrer">
-        <img src="/assets/quirkworks-new.jpg" alt="Quirk Works Logo"
-             style="width:100%; max-width:720px; height:auto; display:block; margin:0 auto; cursor:pointer;" />
-      </a>
-    </div>
+    <a href="https://www.quirkvw.com" target="_blank" rel="noopener noreferrer">
+      <img class="brand-img" src="/assets/quirkworks-new.jpg" alt="Quirk Works Logo">
+    </a>
   </main>
 
-  <!-- Load the same app.js to enable Spanish translation -->
+  <!-- Load the same app.js to enable Spanish translation (if used globally) -->
   <script src="/assets/app.js"></script>
 </body>
 </html>
